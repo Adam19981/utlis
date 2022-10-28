@@ -1,0 +1,1 @@
+export { createProp } from "./propsDefault";
