@@ -1,6 +1,9 @@
 {
   "name": "@sworks/utlis",
-  "version": "1.0.0",
+  "version": "1.0.2",
+  "main":"src/index.ts",
+  "module":"src/index.ts",
+  "types": "index.d.ts",
   "devDependencies": {
     "html-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.4.1",

@@ -9,7 +9,7 @@ export class createProp {
 		return this.createAll(Function, defaultValue);
 	}
 
-	static createObject(defaultValue: { [key: string]: any } | null = {}) {
+	static createObject(defaultValue: Record<string, any> | null = {}) {
 		return this.createAll(Object, () => defaultValue);
 	}
 

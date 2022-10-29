@@ -3,14 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     mode: 'development',
-    entry: path.join(__dirname,'./src/index.ts'),
+    entry: path.join(__dirname,'src/index.ts'),
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'index.js'
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, './index.html'),
+            template: path.join(__dirname, 'index.html'),
             filename: "index.html"
         })
     ],
@@ -23,14 +23,14 @@ module.exports = {
                 loader: 'ts-loader', // 通过ts-loader处理以ts结尾的文件
                 exclude: /node_modules/, // 指定要排除的文件
                 options: {
-                    configFile: path.join(__dirname, './tsconfig.json')
+                    configFile: path.join(__dirname, 'tsconfig.json')
                 }
             }
         ]
     },
     devServer: {
         port:9000,
-        static:path.join(__dirname, './dist')
+        static:path.join(__dirname, 'dist')
     },
     // 用来设置哪些可以作为模块引入
     resolve:{
