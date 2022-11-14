@@ -1,9 +1,8 @@
 {
-  "name": "@sworks/utlis",
-  "version": "1.0.2",
-  "main":"src/index.ts",
-  "module":"src/index.ts",
-  "types": "index.d.ts",
+  "name": "@sworks/utils",
+  "version": "1.0.9",
+  "main":"dist/index.js",
+  "types": "dist/index.d.ts",
   "devDependencies": {
     "html-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.4.1",
@@ -14,7 +13,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "tsc --noEmit && webpack",
     "serve": "webpack-dev-server"
   },
   "repository": {
@@ -27,6 +26,7 @@
   "bugs": {
     "url": "https://github.com/Adam19981/utlis/issues"
   },
+  "files": ["dist"],
   "homepage": "https://github.com/Adam19981/utlis#readme",
   "description": ""
 }
