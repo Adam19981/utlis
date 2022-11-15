@@ -4,9 +4,8 @@
     "module": "commonjs",
     "target": "esnext",
     "baseUrl": ".",
-    "outDir": "dist",
+    "outDir": "lib",
     "sourceMap": true,
-    "removeComments": true
   },
   "include": [
     "src/*"

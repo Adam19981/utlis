@@ -1,4 +1,12 @@
-export { createProp } from "./props";
-export * as SDate from './date'
-export * as SPerformance  from './performance'
-export * as SCommon from './common'
+import { createProp } from "./props";
+import * as SDate from './date'
+import * as SPerformance  from './performance'
+import * as SCommon from './common'
+
+
+export {
+    createProp,
+    SDate,
+    SPerformance,
+    SCommon
+}

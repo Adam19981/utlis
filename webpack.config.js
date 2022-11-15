@@ -5,7 +5,7 @@ module.exports = {
     mode: 'development',
     entry: path.join(__dirname,'src/index.ts'),
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, 'lib'),
         filename: 'index.js'
     },
     plugins: [
