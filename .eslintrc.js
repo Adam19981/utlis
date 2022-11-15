@@ -46,22 +46,6 @@ module.exports = {
 		"@typescript-eslint/no-use-before-define": "off", // 禁止在变量定义之前使用它们
 		"@typescript-eslint/ban-ts-comment": "off", // 禁止 @ts-<directive> 使用注释或要求在指令后进行描述
 		"@typescript-eslint/no-non-null-assertion": "off", // 不允许使用后缀运算符的非空断言(!)
-		"@typescript-eslint/explicit-module-boundary-types": "off", // 要求导出函数和类的公共类方法的显式返回和参数类型
-
-		// vue (https://eslint.vuejs.org/rules)
-		"vue/no-v-html": "off", // 禁止使用 v-html
-		"vue/script-setup-uses-vars": "error", // 防止<script setup>使用的变量<template>被标记为未使用，此规则仅在启用该no-unused-vars规则时有效。
-		"vue/v-slot-style": "error", // 强制执行 v-slot 指令样式
-		"vue/no-mutating-props": "off", // 不允许组件 prop的改变（明天找原因）
-		"vue/custom-event-name-casing": "off", // 为自定义事件名称强制使用特定大小写
-		"vue/attributes-order": "off", // vue api使用顺序，强制执行属性顺序
-		"vue/one-component-per-file": "off", // 强制每个组件都应该在自己的文件中
-		"vue/html-closing-bracket-newline": "off", // 在标签的右括号之前要求或禁止换行
-		"vue/max-attributes-per-line": "off", // 强制每行的最大属性数
-		"vue/multiline-html-element-content-newline": "off", // 在多行元素的内容之前和之后需要换行符
-		"vue/singleline-html-element-content-newline": "off", // 在单行元素的内容之前和之后需要换行符
-		"vue/attribute-hyphenation": "off", // 对模板中的自定义组件强制执行属性命名样式
-		"vue/require-default-prop": "off", // 此规则要求为每个 prop 为必填时，必须提供默认值
-		"vue/multi-word-component-names": "off" // 要求组件名称始终为 “-” 链接的单词
+		"@typescript-eslint/explicit-module-boundary-types": "off" // 要求导出函数和类的公共类方法的显式返回和参数类型
 	}
 };
