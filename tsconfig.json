@@ -1,16 +1,20 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "module": "commonjs",
+    "module": "es2015",
     "target": "esnext",
     "baseUrl": ".",
+    "moduleResolution": "node",
     "outDir": "lib",
-    "sourceMap": true,
+    "strict": true,
+    "declaration": true
   },
-  "include": [
-    "src/*"
+  "files": [
+    "src/index.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "lib",
+    "dist"
   ]
 }
+
