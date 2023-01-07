@@ -5,7 +5,6 @@ module.exports = {
 	mode: "development",
 	entry: path.join(__dirname, "src/index.ts"),
 	output: {
-		libraryTarget: "umd",
 		path: path.join(__dirname, "dist"),
 		filename: "index.js"
 	},
