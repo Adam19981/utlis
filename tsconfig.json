@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "module": "es2015",
-    "target": "esnext",
+    "module": "es2016",
+    "target": "es2016",
     "baseUrl": ".",
     "moduleResolution": "node",
     "outDir": "lib",
     "strict": true,
-    "declaration": true
+    "declaration": true,
+    "experimentalDecorators": true
   },
   "files": [
     "src/index.ts"
