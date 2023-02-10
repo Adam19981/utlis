@@ -26,7 +26,7 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3 # 使用部署到 GitHub pages 的 action
         with:
-          publish_dir: /dist/* # 部署打包后的 dist 目录
+          FOLDER: ./dist/* # 部署打包后的 dist 目录
           github_token: ${{ secrets.Deploy }} # secret 名
           commit_message: Update Github gh-pages # 部署时的 git 提交信息，根据自身需要填写即可
 
