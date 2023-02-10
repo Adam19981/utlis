@@ -1,17 +1,21 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "module": "commonjs",
+    "module": "esnext",
     "target": "esnext",
     "baseUrl": ".",
-    "outDir": "dist",
-    "sourceMap": true,
-    "removeComments": true
+    "moduleResolution": "node",
+    "outDir": "lib",
+    "strict": true,
+    "declaration": true,
+    "experimentalDecorators": true
   },
-  "include": [
-    "src/*"
+  "files": [
+    "src/index.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "lib",
+    "dist"
   ]
 }
+
