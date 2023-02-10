@@ -10,7 +10,6 @@ module.exports = {
 		path: path.join(__dirname, "dist"),
 		filename: "index.js"
 	},
-	stats: "errors-only",
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: path.join(__dirname, "index.html"),

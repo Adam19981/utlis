@@ -9,6 +9,7 @@ class A {
 	}
 }
 
+console.log(A);
 // class B {
 // 	constructor(private a: A) {}
 //
