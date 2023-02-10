@@ -3,25 +3,17 @@ name: buildLibrary
 
 # 下文的意思是：当监听到tag的变更时，执行脚本，比如我们在 github 内新建一个tag
 on:
-  pull_request:
+  push:
     branches: [ main ]
 
 # jobs 也就是任务的意思
 jobs:
   build_and_publish:
     # name: 在 Github 中显示的 job 名称
-    name: buildLibrary
+    name: build_publish
     runs-on: ubuntu-latest
     steps:
       # name:  当前 step 的名字
-      - name: Checkout    # 获取分支的代码和提交记录
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js v14.x # 设置 Node.js 的环境
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-
       - name: Install
         run: yarn install # 安装依赖
 
@@ -31,7 +23,7 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3 # 使用部署到 GitHub pages 的 action
         with:
-          publish_dir: /dist # 部署打包后的 dist 目录
+          publish_dir: /dist/* # 部署打包后的 dist 目录
           github_token: ${{ secrets.Deploy }} # secret 名
           commit_message: Update Github gh-pages # 部署时的 git 提交信息，根据自身需要填写即可
 
