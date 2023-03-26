@@ -1,34 +1,69 @@
 import { controller } from "./controller";
+import { defineReactive } from "./observe";
+import { Watcher } from "./watcher";
 
-function reactive<T extends Record<string, any>>(target: T) {
+class Vue {
+	options: any = {
+		data: {
+			obj: {
+				name: "陈",
+				text: 1
+			}
+		}
+	};
+}
+
+export function reactiveV3<T extends Record<string, any>>(target: T) {
 	const handler = {
 		get(target: T, prop: string, receiver: any): any {
-			controller.add(prop, receiver);
+			const res = target[prop];
+			if (res && typeof res === "object") {
+				return reactiveV3(res);
+			}
+			controller.on(prop, target);
 			return Reflect.get(target, prop, receiver);
 		},
 		set(target: T, prop: string, newValue: any, receiver: any): boolean {
 			Reflect.set(target, prop, newValue, receiver);
-			controller.update(prop, receiver);
+			controller.emit(prop, target);
 			return true;
 		}
 	};
 	return new Proxy(target, handler);
 }
 
-const obj = reactive({
-	name: "测试"
-});
-
-function changeName() {
-	const div = document.getElementById("chen")!;
-	div.innerText = obj.name;
+export function ref<T = any>(target: T) {
+	return reactiveV3({ value: target });
 }
 
-controller.inject(changeName);
+export function set(target: Record<string, any>, key: string, value: any) {
+	const obj = target.__ob__;
+	console.log(obj);
+	if (!obj) {
+		target[key] = value;
+		return;
+	}
+	defineReactive(target, key, value);
+	obj.notify();
+}
+
+const { options } = new Vue();
+
+defineReactive(options, "data", options["data"]);
+
+const doc = document.createElement("div");
+document.body.appendChild(doc);
+
+function test() {
+	doc.innerText = options.data.obj.age || "666";
+}
+new Watcher(test);
 
 const button = document.createElement("button");
-button.onclick = function () {
-	obj.name = "测试响应式";
-};
-
+button.style.width = "100px";
+button.style.height = "100px";
+button.innerText = "测试";
 document.body.appendChild(button);
+button.onclick = function () {
+	set(options.data.obj, "age", 23);
+};

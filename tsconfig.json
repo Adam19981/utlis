@@ -2,7 +2,6 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
-    "baseUrl": ".",
     "moduleResolution": "node",
     "outDir": "lib",
     "strict": true,
@@ -12,10 +11,10 @@
   "files": [
     "src/index.ts"
   ],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/*x*/*.tsx", "src/**/*.vue"],
   "exclude": [
     "node_modules",
     "lib",
     "dist"
   ]
 }
-

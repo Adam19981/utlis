@@ -1,4 +1,4 @@
-import { manager as eventManager, EventConstructor } from "../event";
+import { manager as eventManager } from "../event";
 interface Options {
 	url: string;
 	timeOut?: number;
@@ -28,8 +28,6 @@ class Socket {
 
 	isReconnectionLoading: boolean = false; //是否在重新连接中
 
-	eventCenter: EventConstructor = eventManager;
-
 	constructor(options: Options) {
 		if ("WebSocket" in window) {
 			Object.assign(this._options, options);
@@ -57,17 +55,17 @@ class Socket {
 			this.errorStack.clear();
 			this.isReconnectionLoading = false;
 			this.ping();
-			this.eventCenter.emit("open", ev);
+			eventManager.emit("open", ev);
 		};
 
 		this.socket.onmessage = (ev: MessageEvent) => {
-			this.eventCenter.emit("message", ev);
+			eventManager.emit("message", ev);
 		};
 
 		this.socket.onerror = (ev: Event) => {
 			this.reconnection();
 			this.isReconnectionLoading = false;
-			this.eventCenter.emit("error", ev);
+			eventManager.emit("error", ev);
 		};
 
 		this.socket.onclose = () => {
@@ -114,7 +112,7 @@ class Socket {
 	destroy() {
 		this.close();
 		this.socket = undefined;
-		this.eventCenter.funcMap.clear();
+		eventManager.funcMap.clear();
 	}
 }
 
