@@ -7,7 +7,8 @@ class Vue {
 		data: {
 			obj: {
 				name: "陈",
-				text: 1
+				text: 1,
+				list: ["nihao"]
 			}
 		}
 	};
@@ -55,7 +56,11 @@ const doc = document.createElement("div");
 document.body.appendChild(doc);
 
 function test() {
-	doc.innerText = options.data.obj.age || "666";
+	let name: string = "";
+	options.data.obj.list.forEach((item: string) => {
+		name += item;
+	});
+	doc.innerText = name;
 }
 new Watcher(test);
 
@@ -65,5 +70,5 @@ button.style.height = "100px";
 button.innerText = "测试";
 document.body.appendChild(button);
 button.onclick = function () {
-	set(options.data.obj, "age", 23);
+	options.data.obj.list.push("真的吗");
 };

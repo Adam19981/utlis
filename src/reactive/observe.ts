@@ -1,14 +1,14 @@
 import { Dep } from "./dep";
 
 export function observer(target: any) {
-	if (typeof target !== "object") return;
-	if (target.__ob__) return;
+	if (typeof target !== "object" || target.__ob__) return;
 	Object.defineProperty(target, "__ob__", {
 		value: new Dep(),
 		configurable: true,
 		writable: true
 	});
 	if (Array.isArray(target)) {
+		reactiveArray(target);
 		return;
 	}
 	Object.keys(target).forEach(key => {
@@ -22,12 +22,11 @@ export function defineReactive(target: any, key: string, value: any) {
 	const dep = new Dep();
 	const propertyDescriptor = {
 		configurable: true,
+		enumerable: true,
 		get() {
 			console.log("get");
 			dep.depend();
-			if (value.__ob__) {
-				value.__ob__.depend();
-			}
+			value.__ob__ && value.__ob__.depend();
 			return value;
 		},
 		set(newValue: any) {
@@ -39,4 +38,20 @@ export function defineReactive(target: any, key: string, value: any) {
 		}
 	};
 	Object.defineProperty(target, key, propertyDescriptor);
+}
+
+export function reactiveArray(target: any) {
+	const obj = Object.create(Array.prototype);
+	const methodsList = ["push", "pop", "shift", "unshift", "splice", "sort", "reverse"];
+
+	methodsList.forEach(item => {
+		const methods = obj[item];
+		Object.defineProperty(obj, item, {
+			value: function (...args: any) {
+				methods.apply(this, args);
+				target.__ob__.notify();
+			}
+		});
+	});
+	target.__proto__ = obj;
 }
